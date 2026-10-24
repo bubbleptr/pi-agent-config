@@ -27,27 +27,33 @@
     "extensions": [
       "./extensions/defaults.ts",
       "./extensions/auto-name.ts",
-      "./node_modules/context-mode/build/adapters/pi/extension.js",
-      "./node_modules/pi-subagents/index.ts",
+      "./node_modules/@earendil-works/pi-radius/extensions/radius-routing.ts",
+      "./node_modules/@earendil-works/pi-radius/extensions/radius-notices.ts",
+      "./node_modules/@earendil-works/pi-radius/extensions/radius-web-search.ts",
+      "./node_modules/@earendil-works/pi-radius/extensions/radius-mcp-migration.ts",
+      "./node_modules/@tintinweb/pi-subagents/src/index.ts",
+      "./node_modules/@aliou/pi-guardrails/extensions/path-access/index.ts",
+      "./node_modules/@aliou/pi-guardrails/extensions/guardrails/index.ts",
+      "./node_modules/@aliou/pi-guardrails/extensions/permission-gate/index.ts",
+      "./node_modules/@aliou/pi-guardrails/extensions/herdr/index.ts",
+      "./node_modules/@ff-labs/pi-fff/src/index.ts",
       "./node_modules/nowledge-mem-pi/extensions/nowledge-mem.ts",
-      "./node_modules/pi-web-access/index.ts",
+      "./node_modules/pi-web-access/dist",
       "./node_modules/pi-powerline-footer/index.ts"
     ],
     "skills": [
-      "./node_modules/context-mode/skills",
-      "./node_modules/pi-subagents/skills",
+      "./node_modules/@earendil-works/pi-radius/skills/radius-api",
       "./node_modules/nowledge-mem-pi/skills"
-    ],
-    "prompts": [
-      "./node_modules/pi-subagents/prompts"
     ]
   },
   "dependencies": {
-    "context-mode": "^1.0.169",
-    "nowledge-mem-pi": "^0.8.6",
-    "pi-powerline-footer": "^0.15.0",
-    "pi-subagents": "^0.50.0",
-    "pi-web-access": "^0.23.0"
+    "@aliou/pi-guardrails": "^0.18.1",
+    "@earendil-works/pi-radius": "^0.1.19",
+    "@ff-labs/pi-fff": "^0.10.6",
+    "@tintinweb/pi-subagents": "^0.19.0",
+    "nowledge-mem-pi": "^0.8.14",
+    "pi-powerline-footer": "^0.17.2",
+    "pi-web-access": "^0.30.0"
   },
   "peerDependencies": {
     "@earendil-works/pi-ai": "*",

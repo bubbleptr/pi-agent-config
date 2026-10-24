@@ -33,4 +33,22 @@ describe("pi-agent-config package", () => {
       `pi manifest paths missing (run npm install): ${missing.join(", ")}`,
     );
   });
+
+  // Dependency entries are copied by hand, so an upgrade that adds a resource
+  // to a dependency's own manifest would otherwise be silently left unloaded.
+  it("re-exports every resource each dependency declares", () => {
+    const missing = [];
+    for (const dep of Object.keys(pkg.dependencies)) {
+      const depPkg = JSON.parse(
+        readFileSync(join(root, "node_modules", dep, "package.json"), "utf8"),
+      );
+      for (const key of ["extensions", "skills", "prompts"]) {
+        for (const rel of depPkg.pi?.[key] ?? []) {
+          const expected = `./${join("node_modules", dep, rel)}`;
+          if (!(pkg.pi[key] ?? []).includes(expected)) missing.push(`${key}: ${expected}`);
+        }
+      }
+    }
+    assert.deepEqual(missing, []);
+  });
 });
