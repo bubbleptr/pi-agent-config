@@ -1,6 +1,7 @@
 {
-  "defaultProvider": "deepseek",
-  "defaultModel": "deepseek-v4-flash",
+  "defaultProvider": "radius",
+  "defaultModel": "deepseek-v4.1-flash",
   "defaultThinkingLevel": "xhigh",
+  "defaultTools": ["+codemode"],
   "theme": "dark"
 }

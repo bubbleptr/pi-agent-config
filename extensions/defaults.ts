@@ -10,6 +10,9 @@ type Defaults = {
   defaultProvider: string;
   defaultModel: string;
   defaultThinkingLevel: "off" | "minimal" | "low" | "medium" | "high" | "xhigh" | "max";
+  // Same "+name" / "-name" deltas as settings.json `defaultTools`, which a
+  // package cannot write into another machine's settings.
+  defaultTools: string[];
   theme: string;
 };
 
@@ -22,6 +25,13 @@ export default function (pi: ExtensionAPI) {
 
     ctx.ui.setTheme(defaults.theme);
     pi.setThinkingLevel(defaults.defaultThinkingLevel);
+
+    const tools = new Set(pi.getActiveTools());
+    for (const entry of defaults.defaultTools) {
+      if (entry.startsWith("-")) tools.delete(entry.slice(1));
+      else tools.add(entry.replace(/^\+/, ""));
+    }
+    pi.setActiveTools([...tools]);
 
     const model = ctx.modelRegistry.find(defaults.defaultProvider, defaults.defaultModel);
     if (model) {
