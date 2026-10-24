@@ -62,6 +62,12 @@ pi remove npm:pi-web-access
 pi remove npm:pi-powerline-footer
 ```
 
+mbp 上 `~/.pi/agent/extensions/auto-name.ts` 是指向本仓库的软链接，装了这个包之后也要删掉，否则 auto-name 会加载两次：
+
+```bash
+rm ~/.pi/agent/extensions/auto-name.ts
+```
+
 旧版本这个包里的 `context-mode` 和 `pi-subagents`（nicobailon 版）已经去掉，换成上面的 `@tintinweb/pi-subagents`。
 
 `nowledge-mem-pi` 还要在那台机器上配 nmem 客户端（URL / API key）。
